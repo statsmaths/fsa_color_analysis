@@ -1,0 +1,134 @@
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(ggrepel)
+library(stringi)
+library(xtable)
+library(jpeg)
+library(keras)
+library(abind)
+library(EBImage)
+
+source("funs.R")
+```
+
+```{r, message=FALSE}
+fsa <- read_csv("../data/fsa-color.csv")
+cats <- read_csv("../data/cats.csv")
+insts <- read_csv("../data/insts.csv")
+meta <- read_csv("../data/category_meta.csv")
+```
+
+```{r}
+meta %>%
+  group_by(super, group) %>%
+  summarize(items = paste(category, collapse = "; ")) %>%
+  xtable() %>%
+  print(include.rownames = FALSE)
+```
+
+```{r}
+output <- NULL
+for (path in c("1a33896v.jpg", "1a34052v.jpg"))
+{
+  z_orig <- readJPEG(sprintf("../data/images/%s", path))
+  z_anno <- readJPEG(sprintf("../data/annotations/%s", path))
+  output <- abind(output, abind(z_orig, z_anno, along = 2), along = 1)
+  
+  dim(z_orig)
+}
+
+writeJPEG(output, "../figures/segmentation_examples.jpg")
+```
+
+```{r}
+z <- abind(readJPEG("../figures/example_square.jpg"), readJPEG("../figures/example_segementation.jpg"), along = 2)
+writeJPEG(z, "../figures/segmentation_examples_small.jpg")
+```
+
+```{r}
+output <- NULL
+seperator <- array(1, dim = c(20, 500 * 5, 3))
+for (this_category in c("snow", "bridge", "wall-brick", "person", "sky", "food", "mountain", "railroad")) {
+  
+  if (!is.null(output)) output <- abind(output, seperator, along = 1)
+  
+  ids <- head(arrange(filter(cats, category == this_category), desc(n)), 5)$id
+  paths <- sprintf("../data/images/%s.jpg", ids)
+  
+  output_row <- NULL
+  for (path in paths)
+  {
+    y <- readImage(path)
+    z <- imageData(resize(y, w = 500, h = 500))
+    z <- aperm(z, perm = c(2, 1, 3))
+    output_row <- abind(output_row, z, along = 2)
+  }
+  output <- abind(output, output_row, along = 1)
+}
+
+output <- abind(array(1, dim = c(dim(output)[1], 150, 3)), output, along = 2)
+
+writeJPEG(output, "../figures/max_category_grid.jpg")
+```
+
+```{r}
+output <- NULL
+for (this_category in c("banana", "skateboard", "elephant", "cow", "bird", "airplane", "horse", "cell phone")) {
+
+  if (!is.null(output)) output <- abind(output, seperator, along = 1)
+  
+  ids <- head(arrange(filter(insts, category == this_category), desc(size)), 5)$id
+  paths <- sprintf("../data/images/%s.jpg", ids)
+  
+  output_row <- NULL
+  for (path in paths)
+  {
+    y <- readImage(path)
+    z <- imageData(resize(y, w = 500, h = 500))
+    z <- aperm(z, perm = c(2, 1, 3))
+    output_row <- abind(output_row, z, along = 2)
+  }
+  output <- abind(output, output_row, along = 1)
+}
+
+output <- abind(array(1, dim = c(dim(output)[1], 150, 3)), output, along = 2)
+
+writeJPEG(output, "../figures/max_things_grid.jpg")
+```
+
+
+
+
+
+
+```{r}
+sort(table(cats$category))
+```
+
+```{r}
+ids <- head(arrange(filter(cats, category == "fence"), desc(n)), 12)$id
+
+show_image(sprintf("../data/images/%s.jpg", ids), ncol = 4)
+```
+
+```{r}
+z <- insts %>%
+  group_by(id, category) %>%
+  summarize(n = n(), size = sum(size))
+sort(table(z$category))
+```
+
+```{r}
+ids <- head(arrange(filter(z, category == "person", n == 2), desc(size)), 12)$id
+
+show_image(sprintf("../data/images/%s.jpg", ids), ncol = 4)
+```
+
+```{r}
+ids <- head(arrange(filter(z, category == "tie"), desc(size)), 12)$id
+
+show_image(sprintf("../data/images/%s.jpg", ids), ncol = 4)
+```
