@@ -45,7 +45,7 @@ Cultural institutions such as galleries, libraries, archives and museums
 continue to make  commitments to large scale digitization of collections.
 An ongoing challenge is how to increase discovery and access through structured
 data and the semantic web. In this paper we describe a method for using computer vision
-algorithms for the automated detection of ``stuff''
+algorithms that automatically detect regions of ``stuff''
 ---such as the sky, water, and roads---to produce rich and accurate structured
 data triples for describing the content of historic photography.
 We apply our method to a collection of 1610 documentary photographs
@@ -56,7 +56,7 @@ of 97.5\%, compared to 70.7\% for relations extracted from object detection
 and 31.5\% for automatically generated captions. Our method also produces a rich
 set of features, providing more unique labels (1170) than either the captions
 (1040) or object detection (178) methods. We conclude by describing directions
-for more linguistically-focused ontology of region categories that can better
+for a linguistically-focused ontology of region categories that can better
 enrich historical image data. Open source code and the extracted metadata from
 our corpus are made available as external resources. \\
 \newline \Keywords{computer vision, image segmentation, cultural heritage,
@@ -500,7 +500,9 @@ two additional annotations were also computed.
 Each photograph was tagged with detected objects and labelled with any object
 that appeared with at least a probability of 85\% and for each photograph an
 automatically detected caption was produced
-(Figures~\ref{fig:things}-\ref{fig:captions} show examples of these annotations).
+(Figures~\ref{fig:things}-\ref{fig:captions} show examples of these
+annotations).\footnote{Full replication code, data, and results are
+available at: \url{https://github.com/statsmaths/fsa_color_analysis}.}
 The annotations for each photograph were coded to indicate where the annotation
 was accurately applied. A ``stuff'' region label was considered accurate if the
 region was visible within the image and an object label was considered
