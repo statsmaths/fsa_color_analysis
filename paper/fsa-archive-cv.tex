@@ -45,8 +45,9 @@ Cultural institutions such as galleries, libraries, archives and museums
 continue to make  commitments to large scale digitization of collections.
 An ongoing challenge is how to increase discovery and access through structured
 data and the semantic web. In this paper we describe a method for using computer vision
-algorithms that automatically detect regions of ``stuff''
----such as the sky, water, and roads---to produce rich and accurate structured
+algorithms that automatically detect regions of
+``stuff''---such as the sky, water, and roads---to produce rich and accurate
+structured
 data triples for describing the content of historic photography.
 We apply our method to a collection of 1610 documentary photographs
 produced in the 1930s
@@ -93,7 +94,7 @@ search or data extraction. While records may include extensive metadata
 about the provenance of a digital image, there is often little to no structured data
 pertaining to the content of the image itself. Even when descriptive captions
 exist, these are typically short and intended to be read alongside the object itself.
-In other words, aptions are written assuming that the reader will be able to look
+In other words, captions are written assuming that the reader will be able to look
 at the object. The lack of
 structured linguistic descriptions serves as a roadblock to providing rich links
 between and across collections, as well as limiting the possibilities for
@@ -108,13 +109,14 @@ and becomes more difficult as digitized datasets increase in size
 \caption{Automatically generated labels assigned to FSA-OWI color photographs
 by the Mask R-CNN instance object classification algorithm (X101-FPN)
 \protect\cite{wu2019detectron2}. For each of the eight selected object types,
-the five images from the FSA-OWI
-color photographs that are most predicted to contain the given category.
-All categories were estimated to exist a probability greater than 80\%. The
+the five images from the FSA-OWI color
+photographs that are most predicted to contain the given category are shown.
+All categories were estimated to exist with probability greater than 80\%. The
 plane and horse categories seem to have correctly identified the objects in
 their five respective images, and two of the cow images are in fact cows
-(the others are horses). The other categories seem to be all false detections.
-Many mistakes are hard to explain, such as the row of skateboard objects.
+(the others are horses). The remaining categories seem to be all false
+detections. Many mistakes are hard to explain, such as the row of skateboard
+objects.
 }
 \label{fig:things}
 \end{center}
@@ -144,9 +146,10 @@ extracted data records are particularly concerning when making data available
 to the public. Even when including confidence scores for extracted features,
 studies have shown that people have trouble accurately interpreting probabilistic
 data and are overly confident in predictions \cite{khaw2019individual}.
-The challenges of mis-classified data are particularly accurate when they risk
-reinforcing racial, gender, and socioeconomic biases inherent in the training of
-machine learning techniques. For example, a recent study showed that face
+The challenges of mis-classified data are particularly acute when they risk
+reinforcing racial, gender, and socioeconomic biases inherent in the training
+data behind machine learning techniques. For example, a recent study showed
+that face
 detection algorithms have difficulty identifying darker skinned individuals
 \cite{buolamwini2018gender}. Applying state-of-the-art face detection
 algorithms to a collection of photographs, therefore, risks further hiding
@@ -170,9 +173,10 @@ researched photography archives from the United States \cite{tagg2009disciplinar
 Second, the collection is held by a library that is invested in open access and
 encourages experimentation with their digital collections. Third, the collection
 is indicative of many documentary photography collections held in GLAM
-institutions. It is a large enough collection that manual annotation is time
-consuming and expensive as well as has some descriptive metadata with vague
-captions that do not easily facilitate   semantic connections within and across
+institutions. It is a large enough collection that manual annotation of new
+features would be overly time consuming and expensive. It has has some
+descriptive metadata consisting of minimal captions, but these are too short and
+vauge to easily facilitate semantic connections within and across
 collections.
 
 The remainder of this article is structured as follows.
@@ -215,7 +219,8 @@ detected five types of regions: sky, mountain, grass, things, and person.}
 The algorithmic identification of objects within an image is one of the most
 prominent tasks in computer vision. Early tasks focused on
 relatively simple objectives, such as the classification of hand-written
-digits in the MNIST dataset, which used small 28-by-28 black and white pixels
+digits in the MNIST dataset, which used small 28-by-28 grids of
+black and white pixels
 \cite{platt1999using}. Modern training datasets feature thousands of categories,
 ranging for very specific categories, such as a specific species of dogs, to
 relatively abstract concepts such as `grocery stores' and `parties'. Using
@@ -233,7 +238,7 @@ Available models feature categories that are too specific and only cover
 a very small number of the object types that could be seen within the frame
 of modern, western-centric film and photography. When considering historical
 or more diverse datasets, the coverage is even worse. For example, the popular
-ISVRC dataset contains 1000 categories, but only seven types of fruits
+ILSVRC dataset contains 1000 categories, but only seven types of fruits
 (fig, pineapple, banana, pomegranate, apple, strawberry, orange, and lemon),
 four vegetables (cucumber, artichoke, bell pepper, head cabbage), and eight
 other food items (pretzel, bagel, pizza, hotdog, hamburger, guacamole, burrito,
@@ -309,8 +314,9 @@ mistakenly believes the two men in the frame are giraffes.
   \hline
 \end{tabular}
 \caption{Hierarchical description of 91 stuff categories \protect\cite{caesar2018coco}.
-Additionally, each metacategory other than rawmaterial also contains an ``other'' label
-(not shown) for regions that do not fit into any specific category.}
+Additionally, each metacategory other than ``rawmaterial'' also contains an
+``other'' label (not shown) for regions that do not fit into any specific
+category.}
 \label{tab:categories}
 \end{table*}
 
@@ -320,7 +326,7 @@ Given the difficulty of automatically producing accurate structure data from
 image collections, the use of image embedding has become a popular approach
 for finding links between and across collections of visual data. Similar to
 the process of using word embeddings, image embeddings most frequently project
-a collection of images into the penultimate layer of a supervised neural
+a collection of images into the penultimate layer of a neural
 network. Once represented as a sequence of numbers in a high-dimensional space,
 images within an across collections can be associated with their closest
 neighbors \cite{mcauley2015image}. Flattening image embeddings into two or three dimensions
@@ -345,9 +351,9 @@ automated description of images. In 2018, a research team from
 University of Edinburgh and Google AI released a new corpus of image training
 data that contained 91 new categories \cite{caesar2018coco}. However, unlike
 previous image datasets, their categories did not focus on the detection of
-specific objects. Rather, they team built an ontology and large collection of
+specific objects. Rather, the team built an ontology and large collection of
 training data to detect the ``amorphous background regions" within an image.
-These regions did not correspond to objects, but rather areas of un-enumerable
+These regions do not correspond to objects, but instead to un-enumerable
 collections such as the sky, water, and ceilings. The team described these
 regions as ``stuff" categories and proposed a comprehensive ontology of them.
 Their approach split all regions under two groups: ``indoor stuff" and
@@ -360,8 +366,8 @@ The joint task of identifying these labels alongside object labels
 has been one of shared tasks sponsored by the Common Objects in Context
 challenge from 2017 to 2019 \cite{kirillov2019panoptic}.
 As a result, there are now many accurate models for automatically labelling
-these regions. Figure~\ref{tab:segmentation} illustrated the algorithm by showing
-the detected regions found within an image from the FSA-OWI archive.
+these regions. Figure~\ref{tab:segmentation} shows the detected regions found
+within an image from the FSA-OWI archive.
 
 While no classification scheme
 can be free of cultural assumptions nor account for all possible scenarios,
