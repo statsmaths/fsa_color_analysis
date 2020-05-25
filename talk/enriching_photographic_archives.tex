@@ -133,8 +133,6 @@
 \newcommand{\yblue}[1]{\textcolor{yaleblue}{#1}}
 \newcommand{\base}[1]{\textcolor{solarized@base01}{#1}}
 
-\hyphenation{DualNeighbors}
-
 % Prevent slide breaks in the middle of a paragraph:
 \widowpenalties 1 10000
 \raggedbottom
@@ -175,7 +173,6 @@ using Image Region Segmentation}
 \setbeamercolor*{item}{fg=black}
 \author % (optional, for multiple authors)
 {Taylor~Arnold$^{1}$ and Lauren~Tilton$^{2}$}
-% \logo{\includegraphics[height=1.5cm]{img/ur_icon.png}}
 
 \institute[] % (optional)
 {
@@ -258,53 +255,53 @@ data behind machine learning techniques
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{FSA-OWI}
-
-From 1935-1942 the U.S. Federal Government sponsored a photographic program housed within
-the Farm Security Administration (and later, Office of War Information).
-
-Over 170 thousand prints and negatives exist from the collection, all are digitized and
-made available by the Library of Congress.
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{FSA-OWI: Gordon Parks}
-
-\begin{center}
-\includegraphics[width=0.95\textwidth]{img/1024px-Gordon_Parks_-_American_Gothic.jpg}
-\end{center}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{FSA-OWI: Dorothea Lange}
-
-\begin{center}
-\includegraphics[width=0.95\textwidth]{img/1280px-Lange-MigrantMother02.jpg}
-\end{center}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{FSA-OWI: Arthur Rothstein}
-
-\begin{center}
-\includegraphics[width=0.95\textwidth]{img/Farmer_walking_in_dust_storm_Cimarron_County_Oklahoma2.jpg}
-\end{center}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{FSA-OWI: Walker Evans}
-
-\begin{center}
-\includegraphics[height=0.8\textheight]{img/Allie_Mae_Burroughs_print.jpg}
-\end{center}
-
-\end{frame}
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{FSA-OWI}
+%
+% From 1935-1942 the U.S. Federal Government sponsored a photographic program housed within
+% the Farm Security Administration (and later, Office of War Information).
+%
+% Over 170 thousand prints and negatives exist from the collection, all are digitized and
+% made available by the Library of Congress.
+%
+% \end{frame}
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{FSA-OWI: Gordon Parks}
+%
+% \begin{center}
+% \includegraphics[width=0.95\textwidth]{img/1024px-Gordon_Parks_-_American_Gothic.jpg}
+% \end{center}
+%
+% \end{frame}
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{FSA-OWI: Dorothea Lange}
+%
+% \begin{center}
+% \includegraphics[width=0.95\textwidth]{img/1280px-Lange-MigrantMother02.jpg}
+% \end{center}
+%
+% \end{frame}
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{FSA-OWI: Arthur Rothstein}
+%
+% \begin{center}
+% \includegraphics[width=0.95\textwidth]{img/Farmer_walking_in_dust_storm_Cimarron_County_Oklahoma2.jpg}
+% \end{center}
+%
+% \end{frame}
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{FSA-OWI: Walker Evans}
+%
+% \begin{center}
+% \includegraphics[height=0.8\textheight]{img/Allie_Mae_Burroughs_print.jpg}
+% \end{center}
+%
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{FSA-OWI}
@@ -326,12 +323,23 @@ institutions  \pause
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Photogrammar}
 
-[image here]
+\begin{center}
+\includegraphics[height=0.8\textheight]{img/pgram1.jpg}
+\end{center}
 
 \end{frame}
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Photogrammar}
+%
+% \begin{center}
+% \includegraphics[height=0.8\textheight]{img/pgram2.jpg}
+% \end{center}
+%
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Other approaches}
+\section{Previous Approaches}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
@@ -359,6 +367,15 @@ Wu, Y., Kirillov, A., Massa, F., Lo, W.-Y., and Girshick, R. (2019). \textit{Det
 \begin{frame}{Object Detection}
 
 \begin{center}
+\includegraphics[width=0.95\textwidth]{img/object.jpg}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Object Detection}
+
+\begin{center}
 \includegraphics[width=0.95\textwidth]{../figures/max_things_grid_labels_small.jpg}
 \end{center}
 
@@ -368,7 +385,7 @@ Wu, Y., Kirillov, A., Massa, F., Lo, W.-Y., and Girshick, R. (2019). \textit{Det
 \begin{frame}{Object Detection}
 
 \begin{center}
-\includegraphics[width=0.95\textwidth]{../figures/max_things_grid_labels_small_bottom.png}
+\includegraphics[width=0.95\textwidth]{../figures/max_things_grid_labels_small_bottom.jpg}
 \end{center}
 
 \end{frame}
@@ -538,7 +555,7 @@ Our method:
 \begin{frame}{}
 
 \begin{center}
-\includegraphics[width=0.95\textwidth]{../figures/max_category_grid_labels_top.png}
+\includegraphics[width=0.95\textwidth]{../figures/max_category_grid_labels_top.jpg}
 \end{center}
 
 \end{frame}
@@ -547,7 +564,7 @@ Our method:
 \begin{frame}{}
 
 \begin{center}
-\includegraphics[width=0.95\textwidth]{../figures/max_category_grid_labels_bottom.png}
+\includegraphics[width=0.95\textwidth]{../figures/max_category_grid_labels_bottom.jpg}
 \end{center}
 
 \end{frame}
@@ -558,13 +575,15 @@ Our method:
 \begin{frame}{Quantitative evaluation}
 \centering
 
+Hand labelled accuracy of the annotations generated by each method.
+
 \begin{tabular}{lccc}
  \hline
- & \textbf{Acc.} & \textbf{Recall} & \textbf{Unique Results} \\
+ & \textbf{Accuracy} & \textbf{Images Labelled} & \textbf{Unique Results} \\
  \hline
-Stuff \& People & 97.5\% & 98.9\% & 1140 \\
-Objects & 70.7\% & 37.3\% & 178 \\
 Captions & 31.5\% & 100\% & 1040 \\
+Objects & 70.7\% & 37.3\% & 178 \\
+Stuff \& People & 97.5\% & 98.9\% & 1140 \\
   \hline
 \end{tabular}
 
